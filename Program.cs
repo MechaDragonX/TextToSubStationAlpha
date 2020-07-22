@@ -66,7 +66,12 @@ namespace TextToSubStationAlpha
                 if(line2 != "")
                     File.AppendAllLinesAsync(writePath, new string[] { line1, line2 });
                 else
-                    File.AppendAllTextAsync(writePath, line1);
+                    File.AppendAllLinesAsync(writePath, new string[] { line1 });
+
+                if (line2 == "")
+                    Console.WriteLine(line1);
+                else
+                    Console.WriteLine(line1 + "\n" + line2);
             }
         }
     }
