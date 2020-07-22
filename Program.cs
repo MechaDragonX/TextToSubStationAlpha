@@ -18,10 +18,11 @@ namespace TextToSubStationAlpha
             // Get the text
             string[] text = File.ReadAllLines("D:/Chinese Art Video Subs/translations.txt");
 
+            string endTime = "09:27";
             string[] current;
             string[] next = null;
-            string endTime = "09:27";
-            string altTime;
+            string time1 = "";
+            string time2;
             string line1;
             string line2 = "";
             for(int i = 0; i < text.Length; i++)
@@ -30,37 +31,20 @@ namespace TextToSubStationAlpha
                 if(i != text.Length - 1)
                     next = text[i + 1].Split('\t');
 
-                if(next != null)
-                {
-                    if(!current[0].Contains(' '))
-                    {
-                        line1 = $"Dialogue: 0,0:{current[0]}.00,0:{next[0]}.00,Default,,0,0,0,,{{\\be2}}{current[1]}";
-                        if(current[2] != "")
-                            line2 = $"Dialogue: 0,0:{current[0]}.00,0:{next[0]}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
-                    }
-                    else
-                    {
-                        altTime = onscreenPattern.Match(current[0]).Captures[0].Value;
-                        line1 = $"Dialogue: 0,0:{altTime}.00,0:{next[0]}.00,Alt Dialogue,,0,0,0,,{{\\be2}}{current[1]}";
-                        if(current[2] != "")
-                            line2 = $"Dialogue: 0,0:{altTime}.00,0:{next[0]}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
-                    }
+                time1 = onscreenPattern.Match(current[0]).Captures[0].Value;
+                if (next != null)
+                {   
+                    time2 = onscreenPattern.Match(next[0]).Captures[0].Value;
+
+                    line1 = $"Dialogue: 0,0:{time1}.00,0:{time2}.00,Default,,0,0,0,,{{\\be2}}{current[1]}";
+                    if (current[2] != "")
+                        line2 = $"Dialogue: 0,0:{time1}.00,0:{time2}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
                 }
                 else
                 {
-                    if (!current[0].Contains(' '))
-                    {
-                        line1 = $"Dialogue: 0,0:{current[0]}.00,0:{endTime}.00,Default,,0,0,0,,{{\\be2}}{current[1]}";
-                        if(current[2] != "")
-                            line2 = $"Dialogue: 0,0:{current[0]}.00,0:{endTime}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
-                    }
-                    else
-                    {
-                        altTime = onscreenPattern.Match(current[0]).Captures[0].Value;
-                        line1 = $"Dialogue: 0,0:{altTime}.00,0:{endTime}.00,Alt Dialogue,,0,0,0,,{{\\be2}}{current[1]}";
-                        if(current[2] != "")
-                            line2 = $"Dialogue: 0,0:{altTime}.00,0:{endTime}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
-                    }
+                    line1 = $"Dialogue: 0,0:{time1}.00,0:{endTime}.00,Default,,0,0,0,,{{\\be2}}{current[1]}";
+                    if (current[2] != "")
+                        line2 = $"Dialogue: 0,0:{time1}.00,0:{endTime}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
                 }
 
                 if(line2 != "")
