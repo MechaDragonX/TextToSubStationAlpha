@@ -10,6 +10,7 @@ namespace TextToSubStationAlpha
 
         static void Main(string[] args)
         {
+            // Prepare output file
             string writePath;
             Console.WriteLine("What folder do you want to write to?");
             string input;
@@ -56,6 +57,7 @@ namespace TextToSubStationAlpha
             // Get the text
             string[] text = File.ReadAllLines("D:/Chinese Art Video Subs/translations.txt");
 
+            // Parse text
             string endTime = "09:27";
             string[] current;
             string[] next = null;
@@ -66,25 +68,31 @@ namespace TextToSubStationAlpha
             string line2 = "";
             for(int i = 0; i < text.Length; i++)
             {
+                // Get elements
                 current = text[i].Split('\t');
                 if(i != text.Length - 1)
                     next = text[i + 1].Split('\t');
 
+                // Check if text has modifiers
                 if(current[0].Contains(' '))
                     alt = true;
-
+                // Get the raw start time
                 time1 = onscreenPattern.Match(current[0]).Captures[0].Value;
                 if(next != null)
                 {
+                    // Get raw end time
                     time2 = onscreenPattern.Match(next[0]).Captures[0].Value;
+
                     if(alt)
                     {
+                        // Insert times and text
                         line1 = $"Dialogue: 0,0:{time1}.00,0:{time2}.00,Alt Dialogue,,0,0,0,,{{\\be2}}{current[1]}";
                         if(current[2] != "")
                             line2 = $"Dialogue: 0,0:{time1}.00,0:{time2}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
                     }
                     else
                     {
+                        // Insert times and text
                         line1 = $"Dialogue: 0,0:{time1}.00,0:{time2}.00,Default,,0,0,0,,{{\\be2}}{current[1]}";
                         if (current[2] != "")
                             line2 = $"Dialogue: 0,0:{time1}.00,0:{time2}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
@@ -94,23 +102,27 @@ namespace TextToSubStationAlpha
                 {
                     if(alt)
                     {
+                        // Insert times and text
                         line1 = $"Dialogue: 0,0:{time1}.00,0:{endTime}.00,Alt Dialogue,,0,0,0,,{{\\be2}}{current[1]}";
                         if(current[2] != "")
                             line2 = $"Dialogue: 0,0:{time1}.00,0:{endTime}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
                     }
                     else
                     {
+                        // Insert times and text
                         line1 = $"Dialogue: 0,0:{time1}.00,0:{endTime}.00,Default,,0,0,0,,{{\\be2}}{current[1]}";
                         if(current[2] != "")
                             line2 = $"Dialogue: 0,0:{time1}.00,0:{endTime}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
                     }
                 }
 
+                // Write lines to file
                 if(line2 != "")
                     File.AppendAllLinesAsync(writePath, new string[] { line1, line2 });
                 else
                     File.AppendAllLinesAsync(writePath, new string[] { line1 });
 
+                // Rest line variables
                 line1 = "";
                 line2 = "";
             }
