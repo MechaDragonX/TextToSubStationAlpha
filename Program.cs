@@ -10,6 +10,7 @@ namespace TextToSubStationAlpha
 
         static void Main(string[] args)
         {
+            string writePath;
             Console.WriteLine("What folder do you want to write to?");
             string input;
             while(true)
@@ -21,7 +22,7 @@ namespace TextToSubStationAlpha
                 Console.WriteLine("That's not a valid path!");
                 Console.ResetColor();
             }
-            string writePath = input;
+            writePath = input;
             Console.WriteLine("What file do you want to write to");
             input = "";
             while(true)
@@ -36,7 +37,21 @@ namespace TextToSubStationAlpha
             writePath = "/" + input;
 
             // Prepare subtitle file with header information
-            File.WriteAllLines(writePath, File.ReadAllLines("D:/Chinese Art Video Subs/header.txt"));
+            string headerPath;
+            Console.WriteLine("What's the path to your header file? This contains all the subtitle settings and format information.");
+            input = "";
+            while(true)
+            {
+                input = Console.ReadLine();
+                if(File.Exists(input))
+                    break;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("That file doesn't exist!");
+                Console.ResetColor();
+            }
+            headerPath = input;
+
+            File.WriteAllLines(writePath, headerPath);
 
             // Get the text
             string[] text = File.ReadAllLines("D:/Chinese Art Video Subs/translations.txt");
