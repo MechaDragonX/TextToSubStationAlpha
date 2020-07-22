@@ -10,7 +10,30 @@ namespace TextToSubStationAlpha
 
         static void Main(string[] args)
         {
-            string writePath = "D:/Chinese Art Video Subs/subtitles.txt";
+            Console.WriteLine("What folder do you want to write to?");
+            string input;
+            while(true)
+            {
+                input = Console.ReadLine();
+                if(Directory.Exists(input))
+                    break;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("That's not a valid path!");
+                Console.ResetColor();
+            }
+            string writePath = input;
+            Console.WriteLine("What file do you want to write to");
+            input = "";
+            while(true)
+            {
+                input = Console.ReadLine();
+                if(input.Split('.')[input.Split('.').Length - 1] == ".ass" || input.Split('.')[input.Split('.').Length - 1] == ".ssa")
+                    break;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("That's not a valid SubStaiton Alpha file extension!\nPlease use \".ass\" or \".ssa\".");
+                Console.ResetColor();
+            }
+            writePath = "/" + input;
 
             // Prepare subtitle file with header information
             File.WriteAllLines(writePath, File.ReadAllLines("D:/Chinese Art Video Subs/header.txt"));
