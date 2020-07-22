@@ -51,11 +51,23 @@ namespace TextToSubStationAlpha
                 Console.ResetColor();
             }
             headerPath = input;
-
-            File.WriteAllLines(writePath, headerPath);
+            File.WriteAllLines(writePath, File.ReadAllLines(headerPath));
 
             // Get the text
-            string[] text = File.ReadAllLines("D:/Chinese Art Video Subs/translations.txt");
+            string trans;
+            Console.WriteLine("What file do you want use as the translation file?");
+            input = "";
+            while(true)
+            {
+                input = Console.ReadLine();
+                if(File.Exists(input))
+                    break;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("That file doesn't exist!");
+                Console.ResetColor();
+            }
+            trans = input;
+            string[] text = File.ReadAllLines(trans);
 
             // Parse text
             string endTime = "09:27";
