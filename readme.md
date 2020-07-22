@@ -71,10 +71,7 @@ The program will read this and produce subtitle lines that start on the timestam
 
 ## What isn't supported?
 - Timestamps above 59 minutes (`1:23:45`)
-    - Unsupported
 - Timestamps with milliseconds (`0:23.36`)
-    - Unsupported
 - Karaoke style subtitles or other fancy formatting
     - [Example](https://youtu.be/il4cAeVzZwI) (Japanese subtitles in that video created by creator of the [YTSubtitleConverter repo](https://github.com/arcusmaximus/YTSubConverter))
-    - Unspported
     - I don't know how this works and I don't intend to support it.
