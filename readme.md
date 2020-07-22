@@ -6,7 +6,7 @@ TextToSubStationAlpha is a simple program that takes a text file with timestamps
 ## Examples
 - This project came about when a Chinese friend recommended a drawing video to me. He made translations and I made a subtitle file.
     - [Original Video](https://youtu.be/ZPd82SrT3BE)
-    - Subtitled Video: Coming Soon.
+    - [Subtitled Video](https://youtu.be/Ec86-0G_eWc)
     - All examples in this document that aren't cited come from this video.
 - More coming soon~!
 
