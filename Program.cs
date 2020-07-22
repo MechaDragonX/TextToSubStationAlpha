@@ -29,7 +29,7 @@ namespace TextToSubStationAlpha
             while(true)
             {
                 input = Console.ReadLine();
-                if (input.Split('.')[input.Split('.').Length - 1] == "ass" || input.Split('.')[input.Split('.').Length - 1] == "ssa")
+                if(input.Split('.')[input.Split('.').Length - 1] == "ass" || input.Split('.')[input.Split('.').Length - 1] == "ssa")
                     break;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("That's not a valid SubStaiton Alpha file extension!\nPlease use \".ass\" or \".ssa\".");
@@ -89,6 +89,7 @@ namespace TextToSubStationAlpha
                 // Check if text has modifiers
                 if(current[0].Contains(' '))
                     alt = true;
+
                 // Get the raw start time
                 time1 = onscreenPattern.Match(current[0]).Captures[0].Value;
                 if(next != null)
@@ -115,11 +116,12 @@ namespace TextToSubStationAlpha
                         line2 = $"Dialogue: 0,0:{time1}.00,0:{endTime}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
                 }
 
-                // Write lines to file
-                if(line2 != "")
-                    File.AppendAllLinesAsync(writePath, new string[] { line1, line2 });
+                // Write lines to ouput file
+                if (line2 != "")
+                    line1 = "\n" + line1 + "\n" + line2;
                 else
-                    File.AppendAllLinesAsync(writePath, new string[] { line1 });
+                    line1 = "\n" + line1;
+                File.AppendAllTextAsync(writePath, line1);
 
                 // Rest current values
                 line1 = "";
