@@ -35,14 +35,14 @@ namespace TextToSubStationAlpha
                     if(!current[0].Contains(' '))
                     {
                         line1 = $"Dialogue: 0,0:{current[0]}.00,0:{next[0]}.00,Default,,0,0,0,,{{\\be2}}{current[1]}";
-                        if(current.Length == 3)
+                        if(current[2] != "")
                             line2 = $"Dialogue: 0,0:{current[0]}.00,0:{next[0]}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
                     }
                     else
                     {
                         altTime = onscreenPattern.Match(current[0]).Captures[0].Value;
                         line1 = $"Dialogue: 0,0:{altTime}.00,0:{next[0]}.00,Alt Dialogue,,0,0,0,,{{\\be2}}{current[1]}";
-                        if(current.Length == 3)
+                        if(current[2] != "")
                             line2 = $"Dialogue: 0,0:{altTime}.00,0:{next[0]}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
                     }
                 }
@@ -51,14 +51,14 @@ namespace TextToSubStationAlpha
                     if (!current[0].Contains(' '))
                     {
                         line1 = $"Dialogue: 0,0:{current[0]}.00,0:{endTime}.00,Default,,0,0,0,,{{\\be2}}{current[1]}";
-                        if(current.Length == 3)
+                        if(current[2] != "")
                             line2 = $"Dialogue: 0,0:{current[0]}.00,0:{endTime}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
                     }
                     else
                     {
                         altTime = onscreenPattern.Match(current[0]).Captures[0].Value;
                         line1 = $"Dialogue: 0,0:{altTime}.00,0:{endTime}.00,Alt Dialogue,,0,0,0,,{{\\be2}}{current[1]}";
-                        if(current.Length == 3)
+                        if(current[2] != "")
                             line2 = $"Dialogue: 0,0:{altTime}.00,0:{endTime}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
                     }
                 }
