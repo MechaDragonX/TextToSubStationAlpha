@@ -11,7 +11,7 @@ TextToSubStationAlpha is a simple program that takes a text file with timestamps
 - More coming soon~!
 
 ## How do I run it?
-You can get the latest binaries from the [releases tab](https://github.com/MechaDragonX/TextToSubStationAlpha/releases). **There are Windows, macOS, and Linux builds available for the terminal program.**
+You can get the latest binaries from the [releases tab](https://github.com/MechaDragonX/TextToSubStationAlpha/releases). **There are Windows, macOS, and Linux builds available for the program.**
 
 ## How does this work and how do I use it?
 There are two files necesarry to make this work, a header file and translation file.
