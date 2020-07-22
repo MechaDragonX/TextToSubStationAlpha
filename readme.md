@@ -1,7 +1,7 @@
 # TextToSubStationAlpha
 
 ## What is TextToSubStationAlpha?
-TextToSubStationAlpha is a simple program that takes a text file with timestamps and text and turns it into [Advanced SubSstation Alpha](https://en.wikipedia.org/wiki/SubStation_Alpha) subtitles in either the `.ass` or `.ssa` file extension.
+TextToSubStationAlpha is a simple program that takes a text file with timestamps and text and turns it into [Advanced SubStation Alpha](https://en.wikipedia.org/wiki/SubStation_Alpha) subtitles in either the `.ass` or `.ssa` file extension.
 
 ## Examples
 - This project came about when a Chinese friend recommended a drawing video to me. He made translations and made a subtitle file.
@@ -52,7 +52,7 @@ This file is written to the beginning of the output file before getting the tran
 ### Translations
 The format for this is very simple. Here is an example:
 ![Table Format](https://i.imgur.com/mAUdE6R.png "Table Format")
-The simplest method to create the translation file is to create an spreadsheet Microsoft Excel (I cannot confirm if Google, LibreOffice, or Open Office works) with this format. When you select everything, copy, and then paste the contents into a text, each item will be delimited (separated) by a tab. As you can see here:
+The simplest method to create the translation file is to create an spreadsheet Microsoft Excel (I cannot confirm if Google, LibreOffice, or Open Office works) with this format. When you select everything, copy, and then paste the contents into a text file, each item will be delimited (separated) by a tab. As you can see here:
 ```
 0:00 (Onscreen)	The Process to Make a Masterpiece	
 0:02	How do you start a complete piece?	
