@@ -96,37 +96,23 @@ namespace TextToSubStationAlpha
                     // Get raw end time
                     time2 = onscreenPattern.Match(next[0]).Captures[0].Value;
 
+                    // Insert times and text
                     if(alt)
-                    {
-                        // Insert times and text
                         line1 = $"Dialogue: 0,0:{time1}.00,0:{time2}.00,Alt Dialogue,,0,0,0,,{{\\be2}}{current[1]}";
-                        if(current[2] != "")
-                            line2 = $"Dialogue: 0,0:{time1}.00,0:{time2}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
-                    }
                     else
-                    {
-                        // Insert times and text
                         line1 = $"Dialogue: 0,0:{time1}.00,0:{time2}.00,Default,,0,0,0,,{{\\be2}}{current[1]}";
-                        if (current[2] != "")
-                            line2 = $"Dialogue: 0,0:{time1}.00,0:{time2}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
-                    }
+                    if (current[2] != "")
+                        line2 = $"Dialogue: 0,0:{time1}.00,0:{time2}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
                 }
                 else
                 {
+                    // Insert times and text
                     if(alt)
-                    {
-                        // Insert times and text
                         line1 = $"Dialogue: 0,0:{time1}.00,0:{endTime}.00,Alt Dialogue,,0,0,0,,{{\\be2}}{current[1]}";
-                        if(current[2] != "")
-                            line2 = $"Dialogue: 0,0:{time1}.00,0:{endTime}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
-                    }
                     else
-                    {
-                        // Insert times and text
                         line1 = $"Dialogue: 0,0:{time1}.00,0:{endTime}.00,Default,,0,0,0,,{{\\be2}}{current[1]}";
-                        if(current[2] != "")
-                            line2 = $"Dialogue: 0,0:{time1}.00,0:{endTime}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
-                    }
+                    if(current[2] != "")
+                        line2 = $"Dialogue: 0,0:{time1}.00,0:{endTime}.00,Notes,,0,0,0,,{{\\be2}}{current[2]}";
                 }
 
                 // Write lines to file
