@@ -72,12 +72,12 @@ namespace TextToSubStationAlpha
 
             // Parse text
             string endTime = "09:27";
-            string[] current;
+            string[] current = null;
             string[] next = null;
             bool alt = false;
             string time1 = "";
-            string time2;
-            string line1;
+            string time2 = "";
+            string line1 = "";
             string line2 = "";
             for(int i = 0; i < text.Length; i++)
             {
@@ -135,9 +135,14 @@ namespace TextToSubStationAlpha
                 else
                     File.AppendAllLinesAsync(writePath, new string[] { line1 });
 
-                // Rest line variables
+                // Rest current values
                 line1 = "";
                 line2 = "";
+                alt = false;
+                current = null;
+                next = null;
+                time1 = "";
+                time2 = "";
             }
         }
     }
