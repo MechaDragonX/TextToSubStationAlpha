@@ -29,13 +29,14 @@ namespace TextToSubStationAlpha
             while(true)
             {
                 input = Console.ReadLine();
-                if(input.Split('.')[input.Split('.').Length - 1] == ".ass" || input.Split('.')[input.Split('.').Length - 1] == ".ssa")
+                if (input.Split('.')[input.Split('.').Length - 1] == "ass" || input.Split('.')[input.Split('.').Length - 1] == "ssa")
                     break;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("That's not a valid SubStaiton Alpha file extension!\nPlease use \".ass\" or \".ssa\".");
                 Console.ResetColor();
+                break;
             }
-            writePath = "/" + input;
+            writePath += "/" + input;
 
             // Prepare subtitle file with header information
             string headerPath;
