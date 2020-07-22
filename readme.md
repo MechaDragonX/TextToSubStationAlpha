@@ -4,7 +4,7 @@
 TextToSubStationAlpha is a simple program that takes a text file with timestamps and text and turns it into [Advanced SubStation Alpha](https://en.wikipedia.org/wiki/SubStation_Alpha) subtitles in either the `.ass` or `.ssa` file extension.
 
 ## Examples
-- This project came about when a Chinese friend recommended a drawing video to me. He made translations and made a subtitle file.
+- This project came about when a Chinese friend recommended a drawing video to me. He made translations and I made a subtitle file.
     - [Original Video](https://youtu.be/ZPd82SrT3BE)
     - Subtitled Video: Coming Soon.
     - All examples in this document that aren't cited come from this video.
