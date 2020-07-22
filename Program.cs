@@ -56,6 +56,9 @@ namespace TextToSubStationAlpha
                     Console.WriteLine(line1);
                 else
                     Console.WriteLine(line1 + "\n" + line2);
+
+                line1 = "";
+                line2 = "";
             }
         }
     }
